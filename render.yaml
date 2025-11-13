@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: cbt-php-argon-v3
+    env: docker
+    plan: free
+    buildCommand: docker build -t cbt-php-argon-v3 .
+    startCommand: docker run -p 10000:80 cbt-php-argon-v3
+    autoDeploy: true

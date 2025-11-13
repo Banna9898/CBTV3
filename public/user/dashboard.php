@@ -1,0 +1,4 @@
+<?php require_once __DIR__ . '/../../includes/header.php'; require_login(); $exams = $pdo->query('SELECT exams.*, topics.name as topic_name FROM exams LEFT JOIN topics ON exams.topic_id=topics.id ORDER BY created_at DESC')->fetchAll(PDO::FETCH_ASSOC); ?>
+h3>Available Exams</h3>
+<div class="row"><?php foreach($exams as $e): ?><div class="col-md-6"><div class="card p-3 mb-3"><h5><?php echo e($e['title']); ?></h5><p class="text-muted"><?php echo e($e['description']); ?></p><p>Time: <?php echo e($e['time_limit']); ?> mins</p><a class="btn btn-primary" href="/user/exam.php?exam_id=<?php echo $e['id']; ?>">Take Exam</a></div></div><?php endforeach; ?></div>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>
